@@ -35,19 +35,18 @@
                     <table class="table table-sm">
                         <thead>
                             <tr>
-                                <th scope="col-3">Name</th>
-                                <th scope="col-3">Rent Amount</th>
-                                <th scope="col-3">Parking Cost</th>
-                                <th scope="col-3">Washer/Dryer (Yes/No)</th>
-                                <th scope="col-3">Square Footage</th>
-                                <th scope="col-3">Quality Rating</th>
-                                <th scope="col-3">Distance From Grocery Store</th>
-                                <th scope="col-3">Distance From Public Transit</th>
-                                <th scope="col-3">Places Within Walking Distance</th>
-                                <th scope="col-3">Open On Saturday</th>
-                                <th scope="col-3">Open On Sunday</th>
-                                <th scope="col-3">Additional Features</th>
-                                <th scope="col-3">Website Link</th>
+                                <th scope="col-1">Name</th>
+                                <th scope="col-1">Rent Amount</th>
+                                <th scope="col-1">Parking Cost</th>
+                                <th scope="col-1">Washer/Dryer (Yes/No)</th>
+                                <th scope="col-1">Square Footage</th>
+                                <th scope="col-1">Quality Rating</th>
+                                <th scope="col-1">Distance From Grocery Store</th>
+                                <th scope="col-1">Distance From Public Transit</th>
+                                <th scope="col-1">Places Within Walking Distance</th>
+                                <th scope="col-1">Weekend Availability</th>
+                                <th scope="col-1">Additional Features</th>
+                                <th scope="col-1">Website Link</th>
                             </tr>
                         </thead>
                         <tbody id="displayResults">
@@ -57,7 +56,9 @@
             </div>
 
             <br>
-
+            <!-- Map placement -->
+            <div id="map"></div>
+            <br>
 
             <!-- User additions -->
             <div class="row justify-content-md-center">
@@ -100,7 +101,7 @@
                                         placeholder="How Far Away Is The Nearest Grocery Store?">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleFormControlInput1">Distance From Publick Transit</label>
+                                    <label for="exampleFormControlInput1">Distance From Public Transit</label>
                                     <input type="text" class="form-control" id="transit"
                                         placeholder="How Far Away Is the Nearest Public Transit Station?">
                                 </div>
@@ -130,7 +131,7 @@
                                         placeholder="Please Place A Link Their Website">
                                 </div>
                             </form>
-                            <button id="search" type="submit" class="btn btn-dark">Submit</button>
+                            <button id="userInput" type="submit" class="btn btn-dark">Submit</button>
                             <br><br>
                         </div>
                     </div>
