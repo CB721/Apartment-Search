@@ -36,10 +36,17 @@ $("document").ready(function () {
         //prevent page from submitting itself
         event.preventDefault();
 
+        //prevent user from inputting values in incorrect format
+        if (isNaN($("rent"))) {
+            alert("Please specify a number for rent amount");
+        } else {
+            rent = $("#rent").val().trim();
+        }
+        console.log(rent);
         //capture user inputs and store in variables
         name = $("#name").val().trim();
         location = $("#location").val().trim();
-        rent = $("#rent").val().trim();
+        
         parking = $("#parking").val().trim();
         laundry = $("#laundry").val().trim();
         sqFoot = $("#sq-foot").val().trim();
