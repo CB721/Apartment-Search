@@ -17,6 +17,7 @@ $("document").ready(function () {
 
     //user inputs apartment
     var name = "";
+    var location = "";
     var rent = "";
     var parking = "";
     var laundry = true;
@@ -31,12 +32,13 @@ $("document").ready(function () {
 
     //on click get values from user input
     $("#userInput").on("click", function (event) {
-        
+
         //prevent page from submitting itself
         event.preventDefault();
 
         //capture user inputs and store in variables
         name = $("#name").val().trim();
+        location = $("#location").val().trim();
         rent = $("#rent").val().trim();
         parking = $("#parking").val().trim();
         laundry = $("#laundry").val().trim();
