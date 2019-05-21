@@ -26,8 +26,9 @@ $("document").ready(function () {
     var grocery = "";
     var transit = "";
     var interestPlaces = [];
-    var saturday = true;
-    var sunday = true;
+    var saturday = "";
+    var sunday = "";
+    var weekendAvail = "";
     var features = [];
     var websiteLink = "";
 
@@ -38,7 +39,7 @@ $("document").ready(function () {
         event.preventDefault();
         
         //capture user inputs and store in variables
-        name = $("#name").val().trim();
+        name = $("#name").val().trim().toLowerCase();;
         location = $("#location").val().trim();
         rent = $("#rent").val().trim();
         parking = $("#parking").val().trim();
@@ -48,13 +49,21 @@ $("document").ready(function () {
         grocery = $("#grocery").val().trim();
         transit = $("#transit").val().trim();
         interestPlaces = $("#interest-places").val().trim();
-        saturday = $("#saturday").val().trim();
-        sunday = $("#sunday").val().trim();
+        saturday = $("#saturday").val().trim().toLowerCase();;
+        sunday = $("#sunday").val().trim().toLowerCase();;
         features = $("#features").val().trim();
         websiteLink = $("#website-link").val().trim();
 
         //get percentage of weekend availability
-
+        if (saturday === "yes" && sunday === "yes") {
+            weekendAvail = "100%";
+        } else if (saturday === "yes" || sunday === "yes") {
+            weekendAvail = "50%";
+        } else if (saturday != "yes" && sunday != "yes") {
+            weekendAvail = "0%";
+        } else {
+            console.log("no value for weekend");
+        }
 
         //change all numerical inputs to numbers
         // function determineNumber(r) {
@@ -88,8 +97,7 @@ $("document").ready(function () {
             grocery: grocery,
             transit: transit,
             interestPlaces: interestPlaces,
-            saturday: saturday,
-            sunday: sunday,
+            weekendAvail: weekendAvail,
             features: features,
             websiteLink: websiteLink,
             timeAdded: firebase.database.ServerValue.TIMESTAMP
@@ -129,8 +137,7 @@ $("document").ready(function () {
         var col7 = $("<td class='#grocery-display'>");
         var col8 = $("<td class='#transit-display'>");
         var col9 = $("<td class='#interestPlaces-display'>");
-        var col10 = $("<td class='#saturday-display'>");
-        var col11 = $("<td class='#sunday-display'>");
+        var col10 = $("<td class='#weekendAvail-display'>");
         var col12 = $("<td class='#features-display'>");
         var col13 = $("<td class='#websiteLink-display'>");
 
@@ -144,8 +151,7 @@ $("document").ready(function () {
         col7.text(sv.grocery);
         col8.text(sv.transit);
         col9.text(sv.interestPlaces);
-        col10.text(sv.saturday);
-        col11.text(sv.sunday);
+        col10.text(sv.weekendAvail);
         col12.text(sv.features);
         col13.text(sv.websiteLink);
 
@@ -160,7 +166,6 @@ $("document").ready(function () {
         row.append(col8);
         row.append(col9);
         row.append(col10);
-        row.append(col11);
         row.append(col12);
         row.append(col13);
 
