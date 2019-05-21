@@ -103,25 +103,21 @@ $("document").ready(function () {
         //store snapshot.val() as a variable
         var sv = snapshot.val();
         console.log(sv);
+        
+        //create row
+        //create header row
+        //add header to row
+        //populate header with apartment name
+        //add columns for the other elements
+        //add content for the other elements
+        //add columns to rows
+        //push to html
+
+    }, function (errors) {
+        console.log("Errors handled: " + errors.code);
     });
     //geolocation api from firebase to placement on map?
-    //columns to input
-    //rent amount
-    //parking cost
-    //washer/dryer in unit?
-    //square footage
-    //quality rating
-    //how far from grocery store
-    //how far from public transit
-    //places within walking distance
-    //open on saturday
-    //open on sunday
-    //additional features
-    //pool
-    //tennis court
-    //basketball court
-    //fitness center
-    //link to their website
+    
 
     //assign values for each search parameter
     //end column that totals all values
