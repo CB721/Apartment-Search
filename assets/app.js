@@ -53,6 +53,9 @@ $("document").ready(function () {
         features = $("#features").val().trim();
         websiteLink = $("#website-link").val().trim();
 
+        //get percentage of weekend availability
+
+
         //change all numerical inputs to numbers
         // function determineNumber(r) {
         //     return parseFloat(r);
@@ -105,13 +108,64 @@ $("document").ready(function () {
         console.log(sv);
         
         //create row
+        var row = $("<tr>");
+
         //create header row
+        var headerRow = $("<th scope='row'>");
+
         //add header to row
+        row.append(headerRow);
+
         //populate header with apartment name
+        headerRow.text(sv.name);
+
         //add columns for the other elements
+        var col1 = $("<td class='#location-display'>");
+        var col2 = $("<td class='#rent-display'>");
+        var col3 = $("<td class='#parking-display'>");
+        var col4 = $("<td class='#deposit-display'>");
+        var col5 = $("<td class='#application-display'>");
+        var col6 = $("<td class='#sqFoot-display'>");
+        var col7 = $("<td class='#grocery-display'>");
+        var col8 = $("<td class='#transit-display'>");
+        var col9 = $("<td class='#interestPlaces-display'>");
+        var col10 = $("<td class='#saturday-display'>");
+        var col11 = $("<td class='#sunday-display'>");
+        var col12 = $("<td class='#features-display'>");
+        var col13 = $("<td class='#websiteLink-display'>");
+
         //add content for the other elements
+        col1.text(sv.location);
+        col2.text(sv.rent);
+        col3.text(sv.parking);
+        col4.text(sv.deposit);
+        col5.text(sv.application);
+        col6.text(sv.sqFoot);
+        col7.text(sv.grocery);
+        col8.text(sv.transit);
+        col9.text(sv.interestPlaces);
+        col10.text(sv.saturday);
+        col11.text(sv.sunday);
+        col12.text(sv.features);
+        col13.text(sv.websiteLink);
+
         //add columns to rows
+        row.append(col1);
+        row.append(col2);
+        row.append(col3);
+        row.append(col4);
+        row.append(col5);
+        row.append(col6);
+        row.append(col7);
+        row.append(col8);
+        row.append(col9);
+        row.append(col10);
+        row.append(col11);
+        row.append(col12);
+        row.append(col13);
+
         //push to html
+        $("#displayResults").append(row);
 
     }, function (errors) {
         console.log("Errors handled: " + errors.code);
