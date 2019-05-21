@@ -20,7 +20,8 @@ $("document").ready(function () {
     var location = "";
     var rent = "";
     var parking = "";
-    var laundry = true;
+    var deposit = "";
+    var application = "";
     var sqFoot = "";
     var grocery = "";
     var transit = "";
@@ -37,18 +38,19 @@ $("document").ready(function () {
         event.preventDefault();
 
         //prevent user from inputting values in incorrect format
-        if (isNaN($("rent"))) {
-            alert("Please specify a number for rent amount");
+        if (typeof rent == "number") {
+            console.log('yes');
         } else {
-            rent = $("#rent").val().trim();
+            console.log('no');
         }
-        console.log(rent);
+        
         //capture user inputs and store in variables
         name = $("#name").val().trim();
         location = $("#location").val().trim();
         
         parking = $("#parking").val().trim();
-        laundry = $("#laundry").val().trim();
+        deposit = $("#deposit").val().trim();
+        application = $("#application").val().trim();
         sqFoot = $("#sq-foot").val().trim();
         grocery = $("#grocery").val().trim();
         transit = $("#transit").val().trim();
@@ -63,7 +65,8 @@ $("document").ready(function () {
             name: name,
             rent: rent,
             parking: parking,
-            laundry: laundry,
+            deposit: deosit,
+            application: application,
             sqFoot: sqFoot,
             grocery: grocery,
             transit: transit,
