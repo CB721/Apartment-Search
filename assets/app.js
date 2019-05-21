@@ -36,18 +36,11 @@ $("document").ready(function () {
 
         //prevent page from submitting itself
         event.preventDefault();
-
-        //prevent user from inputting values in incorrect format
-        if (typeof rent == "number") {
-            console.log('yes');
-        } else {
-            console.log('no');
-        }
         
         //capture user inputs and store in variables
         name = $("#name").val().trim();
         location = $("#location").val().trim();
-        
+        rent = $("#rent").val().trim();
         parking = $("#parking").val().trim();
         deposit = $("#deposit").val().trim();
         application = $("#application").val().trim();
@@ -60,12 +53,33 @@ $("document").ready(function () {
         features = $("#features").val().trim();
         websiteLink = $("#website-link").val().trim();
 
+        //change all numerical inputs to numbers
+        // function determineNumber(r) {
+        //     return parseFloat(r);
+        //   }
+          
+        //   console.log(determineNumber(rent));
+          // expected output: 28.695307297889173
+
+
+        // parseFloat(rent);
+
+        //prevent user from inputting values in incorrect format
+        
+        
+        // if (typeof rent === "number") {
+        //     console.log('yes');
+        // } else {
+        //     console.log('no');
+        // }
+
         //push data to the database
         database.ref().push({
             name: name,
+            location: location,
             rent: rent,
             parking: parking,
-            deposit: deosit,
+            deposit: deposit,
             application: application,
             sqFoot: sqFoot,
             grocery: grocery,
@@ -81,8 +95,15 @@ $("document").ready(function () {
 
     });
     //convert address to coordinates - geolocation api
-    //store in firebase
+    
+
     //on child added
+    database.ref().on("child_added", function (snapshot) {
+
+        //store snapshot.val() as a variable
+        var sv = snapshot.val();
+        console.log(sv);
+    });
     //geolocation api from firebase to placement on map?
     //columns to input
     //rent amount
