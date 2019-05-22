@@ -99,6 +99,9 @@ $("document").ready(function () {
 
         //place location on the map
 
+        //current rent variable
+        var currentRent = 1500;
+
         //convert strings to number
         var newRent = parseFloat(sv.rent);
         var newParking = parseFloat(sv.parking);
@@ -107,6 +110,16 @@ $("document").ready(function () {
         var newSqFoot = parseFloat(sv.sqFoot);
         var newGrocery = parseFloat(sv.grocery);
         var newTransit = parseFloat(sv.transit);
+
+        //create value to each parameter - add together to create final value
+        var totalValue = "";
+            //difference between currentRent and new rent
+            //add parking, deposit, application, grocery, transit
+            //subtract sqfoot
+            //subtract number of items in arrays
+                //interestPlaces
+                //features
+            
 
         //create row
         var row = $("<tr>");
@@ -132,6 +145,7 @@ $("document").ready(function () {
         var col9 = $("<td class='#interestPlaces-display'>");
         var col10 = $("<td class='#weekendAvail-display'>");
         var col12 = $("<td class='#features-display'>");
+        var col11 = $("<td class='total-display'>");
         var col13 = $("<td class='#websiteLink-display'>");
 
         //add content for the other elements
@@ -146,6 +160,7 @@ $("document").ready(function () {
         col9.text(sv.interestPlaces);
         col10.text(sv.weekendAvail);
         col12.text(sv.features);
+        col11.text(totalValue);
         col13.text(sv.websiteLink);
 
         //add columns to rows
@@ -160,6 +175,7 @@ $("document").ready(function () {
         row.append(col9);
         row.append(col10);
         row.append(col12);
+        row.append(col11);
         row.append(col13);
 
         //push to html
