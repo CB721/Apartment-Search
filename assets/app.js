@@ -48,12 +48,23 @@ $("document").ready(function () {
         sqFoot = $("#sq-foot").val().trim();
         grocery = $("#grocery").val().trim();
         transit = $("#transit").val().trim();
-        interestPlaces = $("#interest-places").val().trim();
         saturday = $("#saturday").val().trim().toLowerCase();;
         sunday = $("#sunday").val().trim().toLowerCase();;
-        features = $("#features").val().trim();
         websiteLink = $("#website-link").val().trim();
 
+        //user inputs with multiple expected values is pushed to array
+        var interestInput = $("#interest-places").val().trim();
+        var featuresInput = $("#features").val().trim();
+
+        //remove spaces and separate into individual strings
+        var interestRemoveSpaces = interestInput.split(" ");
+        var featuresRemoveSpaces = featuresInput.split(" ");
+
+        //add new strings to "interestPlaces" array and "features" array
+        interestPlaces.push(interestRemoveSpaces);
+        features.push(featuresRemoveSpaces);
+        console.log(interestPlaces);
+        console.log(features);
 
         //prevent user from submitting form without values
         if (name == ""  || location == "" || rent == "" || parking == "" || deposit == "" || application == "" || sqFoot == "" || grocery == "" || transit == "" || interestPlaces == "" || saturday == "" || features == "" || websiteLink == "") {
@@ -87,9 +98,7 @@ $("document").ready(function () {
                 timeAdded: firebase.database.ServerValue.TIMESTAMP
             });
         }
-
     });
-
 
     //on child added
     database.ref().on("child_added", function (snapshot) {
@@ -113,13 +122,19 @@ $("document").ready(function () {
 
         //create value to each parameter - add together to create final value
         var totalValue = "";
-            //difference between currentRent and new rent
+
+            //difference between currentRent and new rent      
+            var rentDifferenece = newRent - currentRent;
+
             //add parking, deposit, application, grocery, transit
+            var recurringExpenses = newParking + newGrocery + newTransit;
+
             //subtract sqfoot
             //subtract number of items in arrays
-                //interestPlaces
-                //features
-            
+            var interestCount = (sv.interestPlaces[0].length);
+            var featuresCount = (sv.features[0].length);
+            var extrasTotal = interestCount + featuresCount;
+            console.log(extrasTotal);
 
         //create row
         var row = $("<tr>");
