@@ -67,7 +67,7 @@ $("document").ready(function () {
         console.log(features);
 
         //prevent user from submitting form without values
-        if (name == ""  || location == "" || rent == "" || parking == "" || deposit == "" || application == "" || sqFoot == "" || grocery == "" || transit == "" || interestPlaces == "" || saturday == "" || features == "" || websiteLink == "") {
+        if (name == "" || location == "" || rent == "" || parking == "" || deposit == "" || application == "" || sqFoot == "" || grocery == "" || transit == "" || interestPlaces == "" || saturday == "" || features == "" || websiteLink == "") {
             alert("Please fill in all fields");
         } else {
             //get percentage of weekend availability
@@ -123,18 +123,22 @@ $("document").ready(function () {
         //create value to each parameter - add together to create final value
         var totalValue = "";
 
-            //difference between currentRent and new rent      
-            var rentDifferenece = newRent - currentRent;
+        //difference between currentRent and new rent      
+        var rentDifferenece = newRent - currentRent;
 
-            //add parking, deposit, application, grocery, transit
-            var recurringExpenses = newParking + newGrocery + newTransit;
+        //add parking, deposit, application, grocery, transit
+        var recurringExpenses = newParking + newGrocery + newTransit;
 
-            //subtract sqfoot
-            //subtract number of items in arrays
-            var interestCount = (sv.interestPlaces[0].length);
-            var featuresCount = (sv.features[0].length);
-            var extrasTotal = interestCount + featuresCount;
-            console.log(extrasTotal);
+        //subtract sqfoot
+        //subtract number of items in arrays
+        var interestCount = (sv.interestPlaces[0].length);
+        var featuresCount = (sv.features[0].length);
+        var extrasTotal = interestCount + featuresCount;
+
+        //get total = rentDifference + recurringExpenses - sqFoot - extrastotal
+        totalValue = -(rentDifferenece + recurringExpenses - newSqFoot - (extrasTotal * 10));
+        console.log(totalValue);
+
 
         //create row
         var row = $("<tr>");
