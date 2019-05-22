@@ -37,7 +37,7 @@ $("document").ready(function () {
 
         //prevent page from submitting itself
         event.preventDefault();
-        
+
         //capture user inputs and store in variables
         name = $("#name").val().trim().toLowerCase();;
         location = $("#location").val().trim();
@@ -54,67 +54,60 @@ $("document").ready(function () {
         features = $("#features").val().trim();
         websiteLink = $("#website-link").val().trim();
 
-        //get percentage of weekend availability
-        if (saturday === "yes" && sunday === "yes") {
-            weekendAvail = "100%";
-        } else if (saturday === "yes" || sunday === "yes") {
-            weekendAvail = "50%";
-        } else if (saturday != "yes" && sunday != "yes") {
-            weekendAvail = "0%";
+
+        //prevent user from submitting form without values
+        if (name == ""  || location == "" || rent == "" || parking == "" || deposit == "" || application == "" || sqFoot == "" || grocery == "" || transit == "" || interestPlaces == "" || saturday == "" || features == "" || websiteLink == "") {
+            alert("Please fill in all fields");
         } else {
-            console.log("no value for weekend");
+            //get percentage of weekend availability
+            if (saturday === "yes" && sunday === "yes") {
+                weekendAvail = "100%";
+            } else if (saturday === "yes" || sunday === "yes") {
+                weekendAvail = "50%";
+            } else if (saturday != "yes" && sunday != "yes") {
+                weekendAvail = "0%";
+            } else {
+                console.log("no value for weekend");
+            }
+            //push data to the database
+            database.ref().push({
+                name: name,
+                location: location,
+                rent: rent,
+                parking: parking,
+                deposit: deposit,
+                application: application,
+                sqFoot: sqFoot,
+                grocery: grocery,
+                transit: transit,
+                interestPlaces: interestPlaces,
+                weekendAvail: weekendAvail,
+                features: features,
+                websiteLink: websiteLink,
+                timeAdded: firebase.database.ServerValue.TIMESTAMP
+            });
         }
 
-        //change all numerical inputs to numbers
-        // function determineNumber(r) {
-        //     return parseFloat(r);
-        //   }
-          
-        //   console.log(determineNumber(rent));
-          // expected output: 28.695307297889173
-
-
-        // parseFloat(rent);
-
-        //prevent user from inputting values in incorrect format
-        
-        
-        // if (typeof rent === "number") {
-        //     console.log('yes');
-        // } else {
-        //     console.log('no');
-        // }
-
-        //push data to the database
-        database.ref().push({
-            name: name,
-            location: location,
-            rent: rent,
-            parking: parking,
-            deposit: deposit,
-            application: application,
-            sqFoot: sqFoot,
-            grocery: grocery,
-            transit: transit,
-            interestPlaces: interestPlaces,
-            weekendAvail: weekendAvail,
-            features: features,
-            websiteLink: websiteLink,
-            timeAdded: firebase.database.ServerValue.TIMESTAMP
-        });
-
-
     });
-    //convert address to coordinates - geolocation api
-    
+
 
     //on child added
     database.ref().on("child_added", function (snapshot) {
 
         //store snapshot.val() as a variable
         var sv = snapshot.val();
-        console.log(sv);
-        
+
+        //place location on the map
+
+        //convert strings to number
+        var newRent = parseFloat(sv.rent);
+        var newParking = parseFloat(sv.parking);
+        var newDeposit = parseFloat(sv.deposit);
+        var newApplication = parseFloat(sv.application);
+        var newSqFoot = parseFloat(sv.sqFoot);
+        var newGrocery = parseFloat(sv.grocery);
+        var newTransit = parseFloat(sv.transit);
+
         //create row
         var row = $("<tr>");
 
@@ -143,13 +136,13 @@ $("document").ready(function () {
 
         //add content for the other elements
         col1.text(sv.location);
-        col2.text(sv.rent);
-        col3.text(sv.parking);
-        col4.text(sv.deposit);
-        col5.text(sv.application);
-        col6.text(sv.sqFoot);
-        col7.text(sv.grocery);
-        col8.text(sv.transit);
+        col2.text(newRent);
+        col3.text(newParking);
+        col4.text(newDeposit);
+        col5.text(newApplication);
+        col6.text(newSqFoot);
+        col7.text(newGrocery);
+        col8.text(newTransit);
         col9.text(sv.interestPlaces);
         col10.text(sv.weekendAvail);
         col12.text(sv.features);
@@ -176,7 +169,7 @@ $("document").ready(function () {
         console.log("Errors handled: " + errors.code);
     });
     //geolocation api from firebase to placement on map?
-    
+
 
     //assign values for each search parameter
     //end column that totals all values
