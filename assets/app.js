@@ -60,6 +60,10 @@ $("document").ready(function () {
         var interestRemoveSpaces = interestInput.split(" ");
         var featuresRemoveSpaces = featuresInput.split(" ");
 
+        //uppercase name
+        const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
+
+
         //add new strings to "interestPlaces" array and "features" array
         interestPlaces.push(interestRemoveSpaces);
         features.push(featuresRemoveSpaces);
@@ -80,7 +84,7 @@ $("document").ready(function () {
             }
             //push data to the database
             database.ref().push({
-                name: name,
+                name: nameCapitalized,
                 location: location,
                 rent: rent,
                 parking: parking,
@@ -167,15 +171,9 @@ $("document").ready(function () {
         col4.text("$" + newDeposit);
         col5.text("$" + newApplication);
         col6.text(newSqFoot + "FT");
-
-        //add items from arrays to columns
-        // for (var i = 0; i < interestPlaces[0].length; i++) { 
-        //     col9.text(interestPlaces[0][i]);
-        //   }
-
         col9.text((sv.interestPlaces[0][0]) + ", " + (sv.interestPlaces[0][1]) + ", " + (sv.interestPlaces[0][2]) + ", " + (sv.interestPlaces[0][3]) + ", " + (sv.interestPlaces[0][4]));
         col10.text(sv.weekendAvail);
-        col12.text(sv.features);
+        col12.text((sv.features[0][0]) + ", " + (sv.features[0][1]) + ", " + (sv.features[0][2]) + ", " + (sv.features[0][3]) + ", " + (sv.features[0][4]));
         col11.text(totalValue);
         col13.text(sv.websiteLink);
 
@@ -186,7 +184,6 @@ $("document").ready(function () {
         row.append(col4);
         row.append(col5);
         row.append(col6);
-
         row.append(col9);
         row.append(col10);
         row.append(col12);
@@ -207,9 +204,5 @@ $("document").ready(function () {
     //if over certain amount, highlight green
     //else, highlight red
     //user has ability to update values as needed
-
-
-
-
 
 });

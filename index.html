@@ -9,6 +9,8 @@
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro&display=swap" rel="stylesheet">
     <!-- Link to CSS -->
     <link rel="stylesheet" href="./assets/styles.css">
     <!-- Firebase link -->
@@ -32,7 +34,7 @@
                 </div>
                 <br>
                 <div class="col-md-12">
-                    <table class="table table-sm">
+                    <table class="table table-sm w-75">
                         <thead>
                             <tr>
                                 <th scope="col-1">Name</th>
@@ -69,11 +71,10 @@
                         </div>
                         <br>
                         <div class="col-md-12">
-                            <form id="trainForm">
+                            <form id="apartmentForm">
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Name</label>
-                                    <input type="text" class="form-control" id="name"
-                                        placeholder="What Is The Name Of The Apartment?">
+                                    <input type="text" class="form-control" id="name" placeholder="What Is The Name Of The Apartment?">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress">Location</label>
@@ -81,63 +82,51 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Rent Amount</label>
-                                    <input type="number" min="1" class="form-control" id="rent"
-                                        placeholder="What Is The Monthly Rent Amount?">
+                                    <input type="number" min="1" class="form-control" id="rent" placeholder="What Is The Monthly Rent Amount?">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Parking Cost</label>
-                                    <input type="number" min="1" class="form-control" id="parking"
-                                        placeholder="How Much Is Parking?">
+                                    <input type="number" min="1" class="form-control" id="parking" placeholder="How Much Is Parking?">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Deposit</label>
-                                    <input type="number" min="1" class="form-control" id="deposit"
-                                        placeholder="How Much Is The Deposit?">
+                                    <input type="number" min="1" class="form-control" id="deposit" placeholder="How Much Is The Deposit?">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Application Fee</label>
-                                    <input type="number" min="1" class="form-control" id="application"
-                                        placeholder="How Much Is The Application Fee?">
+                                    <input type="number" min="1" class="form-control" id="application" placeholder="How Much Is The Application Fee?">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Square Footage</label>
-                                    <input type="number" min="1" class="form-control" id="sq-foot"
-                                        placeholder="What Is The Square Footage?">
+                                    <input type="number" min="1" class="form-control" id="sq-foot" placeholder="What Is The Square Footage?">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Distance From Grocery Store (Miles)</label>
-                                    <input type="number" min="1" class="form-control" id="grocery"
-                                        placeholder="How Far Away Is The Nearest Grocery Store?">
+                                    <input type="number" min="1" class="form-control" id="grocery" placeholder="How Far Away Is The Nearest Grocery Store?">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Distance From Public Transit (Miles)</label>
-                                    <input type="number" min="1" class="form-control" id="transit"
-                                        placeholder="How Far Away Is the Nearest Public Transit Station?">
+                                    <input type="number" min="1" class="form-control" id="transit" placeholder="How Far Away Is the Nearest Public Transit Station?">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Places Of Interest</label>
-                                    <input type="text" class="form-control" id="interest-places"
-                                        placeholder="What Places Are Of Interest Nearby?">
+                                    <input type="text" class="form-control" id="interest-places" placeholder="What Places Are Of Interest Nearby?">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Open On Saturday (Yes/No)</label>
-                                    <input type="text" class="form-control" id="saturday"
-                                        placeholder="Is It Open On Saturday?">
+                                    <input type="text" class="form-control" id="saturday" placeholder="Is It Open On Saturday?">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Open On Sunday (Yes/No)</label>
-                                    <input type="text" class="form-control" id="sunday"
-                                        placeholder="Is It Open On Sunday?">
+                                    <input type="text" class="form-control" id="sunday" placeholder="Is It Open On Sunday?">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Additional Features</label>
-                                    <input type="text" class="form-control" id="features"
-                                        placeholder="Any Additional Features?">
+                                    <input type="text" class="form-control" id="features" placeholder="Any Additional Features?">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Website Link</label>
-                                    <input type="text" class="form-control" id="website-link"
-                                        placeholder="Please Place A Link Their Website">
+                                    <input type="text" class="form-control" id="website-link" placeholder="Please Place A Link Their Website">
                                 </div>
                             </form>
                             <button id="userInput" type="submit" class="btn btn-dark">Submit</button>
