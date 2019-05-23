@@ -63,8 +63,6 @@ $("document").ready(function () {
         //add new strings to "interestPlaces" array and "features" array
         interestPlaces.push(interestRemoveSpaces);
         features.push(featuresRemoveSpaces);
-        console.log(interestPlaces);
-        console.log(features);
 
         //prevent user from submitting form without values
         if (name == "" || location == "" || rent == "" || parking == "" || deposit == "" || application == "" || sqFoot == "" || grocery == "" || transit == "" || interestPlaces == "" || saturday == "" || features == "" || websiteLink == "") {
@@ -129,7 +127,6 @@ $("document").ready(function () {
         //add parking, deposit, application, grocery, transit
         var recurringExpenses = newParking + newGrocery + newTransit;
 
-        //subtract sqfoot
         //subtract number of items in arrays
         var interestCount = (sv.interestPlaces[0].length);
         var featuresCount = (sv.features[0].length);
@@ -137,8 +134,6 @@ $("document").ready(function () {
 
         //get total = rentDifference + recurringExpenses - sqFoot - extrastotal
         totalValue = -(rentDifferenece + recurringExpenses - newSqFoot - (extrasTotal * 10));
-        console.log(totalValue);
-
 
         //create row
         var row = $("<tr>");
@@ -155,12 +150,10 @@ $("document").ready(function () {
         //add columns for the other elements
         var col1 = $("<td class='#location-display'>");
         var col2 = $("<td class='#rent-display'>");
-        var col3 = $("<td class='#parking-display'>");
+        var col3 = $("<td class='#recurring-display'>");
         var col4 = $("<td class='#deposit-display'>");
         var col5 = $("<td class='#application-display'>");
         var col6 = $("<td class='#sqFoot-display'>");
-        var col7 = $("<td class='#grocery-display'>");
-        var col8 = $("<td class='#transit-display'>");
         var col9 = $("<td class='#interestPlaces-display'>");
         var col10 = $("<td class='#weekendAvail-display'>");
         var col12 = $("<td class='#features-display'>");
@@ -169,14 +162,18 @@ $("document").ready(function () {
 
         //add content for the other elements
         col1.text(sv.location);
-        col2.text(newRent);
-        col3.text(newParking);
-        col4.text(newDeposit);
-        col5.text(newApplication);
-        col6.text(newSqFoot);
-        col7.text(newGrocery);
-        col8.text(newTransit);
-        col9.text(sv.interestPlaces);
+        col2.text("$" + newRent);
+        col3.text("$" + recurringExpenses);
+        col4.text("$" + newDeposit);
+        col5.text("$" + newApplication);
+        col6.text(newSqFoot + "FT");
+
+        //add items from arrays to columns
+        // for (var i = 0; i < interestPlaces[0].length; i++) { 
+        //     col9.text(interestPlaces[0][i]);
+        //   }
+
+        col9.text((sv.interestPlaces[0][0]) + ", " + (sv.interestPlaces[0][1]) + ", " + (sv.interestPlaces[0][2]) + ", " + (sv.interestPlaces[0][3]) + ", " + (sv.interestPlaces[0][4]));
         col10.text(sv.weekendAvail);
         col12.text(sv.features);
         col11.text(totalValue);
@@ -189,8 +186,7 @@ $("document").ready(function () {
         row.append(col4);
         row.append(col5);
         row.append(col6);
-        row.append(col7);
-        row.append(col8);
+
         row.append(col9);
         row.append(col10);
         row.append(col12);
